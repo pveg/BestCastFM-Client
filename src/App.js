@@ -1,14 +1,15 @@
-import logo from './logo.svg';
+import { NextUIProvider } from '@nextui-org/react';
+import Nav from './components/Navbar/Nav';
+import Background from './components/Background/Background';
 import './App.css';
 
 
 function App() {
   return (
-    <div className="App">
-    <h1 className="text-3xl font-bold underline">
-      BestCastFM
-    </h1>
-    </div>
+    <NextUIProvider>
+    <Nav/>
+    <Background />
+    </NextUIProvider>
   );
 }
 
