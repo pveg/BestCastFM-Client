@@ -1,11 +1,9 @@
 import { Navbar, Link, Text, Avatar, Dropdown } from "@nextui-org/react";
 import { Layout } from "./Layout.jsx";
 import { AcmeLogo } from "./AcmeLogo.jsx";
-import { motion, useScroll } from "framer-motion"
 
 export default function Nav() {
   const collapseItems = ["Profile", "Podcasts", "Favorites"];
-  const { scrollYProgress } = useScroll();
 
   return (
     <Layout>
@@ -20,7 +18,7 @@ export default function Nav() {
         >
           <AcmeLogo />
           <Text b hideIn="xs">
-            <p className="text-teal-500">BESTCASTFM</p>
+            <p className="text-black">BESTCASTFM</p>
           </Text>
         </Navbar.Brand>
         <Navbar.Content
@@ -29,12 +27,11 @@ export default function Nav() {
           hideIn="xs"
           variant="highlight"
         >
-          <Navbar.Link href="#">Features</Navbar.Link>
+          <Navbar.Link href="#">How it works</Navbar.Link>
           <Navbar.Link isActive href="#">
-            Customers
+            Sign Up
           </Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Company</Navbar.Link>
+          <Navbar.Link href="#">About BestCastFM</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content
           css={{
