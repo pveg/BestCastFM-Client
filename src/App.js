@@ -1,5 +1,5 @@
 import Nav from "./components/Navbar/Nav";
-import Background from "./components/Background/Background";
+import Background from "./components/MainComponents/Background";
 import { Routes, Route } from "react-router-dom";
 import Private from "./components/Private";
 import Anon from "./components/Anon";
@@ -11,13 +11,9 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div>
-        <Nav />
-        <div className="flex justify-center flex-col items-center">
-          <Background className="flex justify-center" />
-        </div>
-      </div>
+      <Nav />
       <Routes>
+        <Route path="/" element={<Background />} />
         <Route
           path="/signup"
           element={
@@ -27,6 +23,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<errorPage />} />
       </Routes>
     </>
   );
