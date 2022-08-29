@@ -1,12 +1,18 @@
-import { Image } from "@nextui-org/react";
+import { Text } from "@nextui-org/react";
+import { motion } from "framer-motion";
 
 export default function NavImage() {
   return (
-    <Image
-      className="w-auto "
-      showSkeleton
-      src="https://res.cloudinary.com/daknbj7xw/image/upload/v1661704512/BestCastFM/Captura_de_ecr%C3%83__2022-08-28__%C3%83_s_17.25_a7ttdd.png"
-      alt="Default Image"
-    />
+    <Text
+      className="text-center"
+      h1
+      size={60}
+      css={{
+        textGradient: "45deg, $yellow600 -20%, $red600 100%",
+      }}
+      weight="bold"
+    >
+      BestCastFM
+    </Text>
   );
 }

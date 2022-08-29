@@ -5,7 +5,7 @@ import ContentInfo from '../ContentInfo/ContentInfo'
 function Background() {
   return (
     <>
-    <IconBG className="mt-2"/>
+    <IconBG/>
     <ContentInfo/>
     </>
   )
