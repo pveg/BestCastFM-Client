@@ -6,8 +6,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
-  const collapseItems = ["Profile", "Podcasts", "Favorites"];
-/*   const { loggedIn, user, logout } = useContext(AuthContext); */
+  const collapseItems = ["Podcasts"];
+  const { loggedIn, user, logout } = useContext(AuthContext);
 
   return (
     <Layout>
@@ -94,7 +94,7 @@ export default function Nav() {
                 css={{
                   minWidth: "100%",
                 }}
-                href="#"
+                href="/podcasts"
               >
                 {item}
               </Link>

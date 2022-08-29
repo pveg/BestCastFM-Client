@@ -1,5 +1,5 @@
 import { Text } from "@nextui-org/react";
-import { motion } from "framer-motion";
+import {Link} from "react-router-dom"
 
 export default function NavImage() {
   return (
@@ -12,7 +12,9 @@ export default function NavImage() {
       }}
       weight="bold"
     >
+      <Link to="/">
       BestCastFM
+      </Link>
     </Text>
   );
 }

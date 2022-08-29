@@ -10,7 +10,7 @@ export default function Login1() {
 
 
     const navigate = useNavigate();
-   const { authenticateUser } = useContext(AuthContext);
+   const {storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -25,6 +25,7 @@ export default function Login1() {
           `${process.env.REACT_APP_API_URL}/auth/login`,
           body
         );
+        let createToken = await storeToken(response.data.authToken);
         authenticateUser();
         navigate("/signup");
       } catch (error) {
