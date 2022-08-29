@@ -11,10 +11,21 @@ import "./App.css";
 function App() {
   return (
     <>
-      <Nav />
-      <Background />
+      <div>
+        <Nav />
+        <div className="flex justify-center flex-col items-center">
+          <Background className="flex justify-center" />
+        </div>
+      </div>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/signup"
+          element={
+            <Anon>
+              <Signup />
+            </Anon>
+          }
+        />
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
