@@ -1,9 +1,13 @@
 import { Navbar, Link, Text, Avatar, Dropdown } from "@nextui-org/react";
 import { Layout } from "./Layout.jsx";
 import { AcmeLogo } from "./AcmeLogo.jsx";
+import { AuthContext } from "../../context/auth.context";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const collapseItems = ["Profile", "Podcasts", "Favorites"];
+/*   const { loggedIn, user, logout } = useContext(AuthContext); */
 
   return (
     <Layout>
@@ -59,7 +63,7 @@ export default function Nav() {
             >
               <Dropdown.Item key="profile" css={{ height: "$18" }}>
                 <Text b color="inherit" css={{ d: "flex" }}>
-                  Signed in as
+                  Signed in as {/* {user.username} */}
                 </Text>
                 <Text b color="inherit" css={{ d: "flex" }}>
                   {}

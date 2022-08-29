@@ -1,14 +1,14 @@
-import React from 'react'
-import IconBG from './IconBG'
-import ContentInfo from '../ContentInfo/ContentInfo'
+import React from "react";
+import IconBG from "./IconBG";
+import ContentInfo from "../ContentInfo/ContentInfo";
 
 function Background() {
   return (
     <>
-    <IconBG/>
-    <ContentInfo/>
+      <IconBG />
+      <ContentInfo />
     </>
-  )
+  );
 }
 
-export default Background
+export default Background;

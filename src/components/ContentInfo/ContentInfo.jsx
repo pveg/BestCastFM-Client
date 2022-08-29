@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 function ContentInfo() {
   return (
     <motion.div
-      initial={{opacity: 0}}
-      animate={{opacity: 1}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 2, times: [0, 0.2, 1] }}
     >
       <Text
