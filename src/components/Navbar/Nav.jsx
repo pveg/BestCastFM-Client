@@ -32,7 +32,7 @@ export default function Nav() {
           variant="highlight"
         >
           <Navbar.Link href="#">How it works</Navbar.Link>
-          <Navbar.Link isActive href="#">
+          <Navbar.Link isActive href="/signup">
             Sign Up
           </Navbar.Link>
           <Navbar.Link href="#">About BestCastFM</Navbar.Link>

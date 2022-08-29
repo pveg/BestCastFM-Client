@@ -1,5 +1,5 @@
 import { Card, Col, Text } from "@nextui-org/react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 
