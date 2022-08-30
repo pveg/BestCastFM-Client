@@ -31,18 +31,29 @@ export default function Nav() {
         >
           <AcmeLogo />
           <Text b hideIn="xs">
-          <Link href="/">
-
-            <Text
-              css={{
-                textGradient: "45deg, $yellow600 -20%, $red600 100%",
-              }}
-            >
-              BESTCASTFM
-            </Text>
-          </Link>
+            <Link href="/">
+              <Text
+                css={{
+                  textGradient: "45deg, $yellow600 -20%, $red600 100%",
+                }}
+              >
+                BESTCASTFM
+              </Text>
+            </Link>
           </Text>
         </Navbar.Brand>
+        {user && (
+          <Navbar.Content
+            enableCursorHighlight
+            activeColor="warning"
+            hideIn="xs"
+            variant="highlight"
+          >
+            <Navbar.Link isActive href="/search-podcasts">
+              Search for your favorite podcasts
+            </Navbar.Link>
+          </Navbar.Content>
+        )}
         {!user && (
           <Navbar.Content
             enableCursorHighlight
@@ -106,9 +117,7 @@ export default function Nav() {
                 </Dropdown.Item>
 
                 <Dropdown.Item key="favorites" withDivider>
-                 <Link href="/profile/favorites">
-                 My Favorites
-                 </Link> 
+                  <Link href="/profile/favorites">My Favorites</Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="favorites" withDivider>
