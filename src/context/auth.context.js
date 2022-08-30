@@ -14,7 +14,7 @@ function AuthProviderWrapper(props) {
   const logout = () => {
     localStorage.removeItem('authToken')
     authenticateUser();
-    navigate('/')
+    navigate('/login')
   }
 
   const authenticateUser = () => {

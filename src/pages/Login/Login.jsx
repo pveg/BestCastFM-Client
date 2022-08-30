@@ -29,7 +29,7 @@ export default function Login(props) {
         );
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/signup");
+        navigate("/search-podcasts");
       } catch (error) {
         console.log(error)
       }

@@ -6,6 +6,7 @@ import Anon from "./components/Anon";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import SearchPodcasts from "./pages/Podcasts/Podcasts";
+import Footer from "./components/Footer/Footer";
 
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/search-podcasts" element={<SearchPodcasts/>} />
         <Route path="*" element={<errorPage />} />
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -101,7 +101,7 @@ export default function Nav() {
                 css={{
                   minWidth: "100%",
                 }}
-                href="/podcasts"
+                href="/search-podcasts"
               >
                 {item}
               </Link>
