@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
-import { useNavigate, Link } from "react-router-dom";
-import { Button, Text } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@nextui-org/react";
 import axios from "axios";
 
 export default function EditProfile() {

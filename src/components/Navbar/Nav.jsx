@@ -1,4 +1,11 @@
-import { Navbar, Link, Text, Avatar, Dropdown, Button } from "@nextui-org/react";
+import {
+  Navbar,
+  Link,
+  Text,
+  Avatar,
+  Dropdown,
+  Button,
+} from "@nextui-org/react";
 import { Layout } from "./Layout.jsx";
 import { AcmeLogo } from "./AcmeLogo.jsx";
 import { AuthContext } from "../../context/auth.context";
@@ -27,18 +34,20 @@ export default function Nav() {
             <p className="text-black">BESTCASTFM</p>
           </Text>
         </Navbar.Brand>
-        <Navbar.Content
-          enableCursorHighlight
-          activeColor="warning"
-          hideIn="xs"
-          variant="highlight"
-        >
-          <Navbar.Link href="#">How it works</Navbar.Link>
-          <Navbar.Link isActive href="/signup">
-            Sign Up
-          </Navbar.Link>
-          <Navbar.Link href="#">About BestCastFM</Navbar.Link>
-        </Navbar.Content>
+        {!user && (
+          <Navbar.Content
+            enableCursorHighlight
+            activeColor="warning"
+            hideIn="xs"
+            variant="highlight"
+          >
+            <Navbar.Link href="#">How it works</Navbar.Link>
+            <Navbar.Link isActive href="/signup">
+              Sign Up
+            </Navbar.Link>
+            <Navbar.Link href="#">About BestCastFM</Navbar.Link>
+          </Navbar.Content>
+        )}
         <Navbar.Content
           css={{
             "@xs": {
@@ -47,11 +56,14 @@ export default function Nav() {
             },
           }}
         >
-        {!user && (
-          <Link href="/login">
-        <Button size='xs' ordered color="gradient"> Login </Button>
-          </Link>
-        )}
+          {!user && (
+            <Link href="/login">
+              <Button size="xs" ordered color="gradient">
+                {" "}
+                Login{" "}
+              </Button>
+            </Link>
+          )}
           {user && (
             <Dropdown placement="bottom-right">
               <Navbar.Item>
@@ -71,7 +83,15 @@ export default function Nav() {
               >
                 <Dropdown.Item key="profile" css={{ height: "$18" }}>
                   <Text b color="inherit" css={{ d: "flex" }}>
-                    Signed in as {user.username}
+                    Signed in as
+                    <Text
+                      className="ml-1"
+                      css={{
+                        textGradient: "45deg, $blue600 -20%, $pink600 50%",
+                      }}
+                    >
+                      {user.username}
+                    </Text>
                   </Text>
                   <Text b color="inherit" css={{ d: "flex" }}></Text>
                 </Dropdown.Item>
@@ -79,13 +99,11 @@ export default function Nav() {
                   My Favorites
                 </Dropdown.Item>
                 <Dropdown.Item key="favorites" withDivider>
-                <Link href="/profile">
-                  My Profile
-                </Link>
+                  <Link href="/profile">My Profile</Link>
                 </Dropdown.Item>
 
                 <Dropdown.Item key="logout" withDivider color="error">
-                  <p onClick={() => logout()} >Log Out</p>
+                  <p onClick={() => logout()}>Log Out</p>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
