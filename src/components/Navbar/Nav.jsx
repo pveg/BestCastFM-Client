@@ -31,7 +31,16 @@ export default function Nav() {
         >
           <AcmeLogo />
           <Text b hideIn="xs">
-            <p className="text-black">BESTCASTFM</p>
+          <Link href="/">
+
+            <Text
+              css={{
+                textGradient: "45deg, $yellow600 -20%, $red600 100%",
+              }}
+            >
+              BESTCASTFM
+            </Text>
+          </Link>
           </Text>
         </Navbar.Brand>
         {!user && (
@@ -41,11 +50,11 @@ export default function Nav() {
             hideIn="xs"
             variant="highlight"
           >
-            <Navbar.Link href="#">How it works</Navbar.Link>
+            <Navbar.Link href="/how-it-works">How it works</Navbar.Link>
             <Navbar.Link isActive href="/signup">
               Sign Up
             </Navbar.Link>
-            <Navbar.Link href="#">About BestCastFM</Navbar.Link>
+            <Navbar.Link href="/AboutPage">About BestCastFM</Navbar.Link>
           </Navbar.Content>
         )}
         <Navbar.Content
@@ -95,9 +104,13 @@ export default function Nav() {
                   </Text>
                   <Text b color="inherit" css={{ d: "flex" }}></Text>
                 </Dropdown.Item>
+
                 <Dropdown.Item key="favorites" withDivider>
-                  My Favorites
+                 <Link href="/profile/favorites">
+                 My Favorites
+                 </Link> 
                 </Dropdown.Item>
+
                 <Dropdown.Item key="favorites" withDivider>
                   <Link href="/profile">My Profile</Link>
                 </Dropdown.Item>

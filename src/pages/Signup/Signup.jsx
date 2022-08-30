@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
+import { Button, Text } from "@nextui-org/react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -40,8 +41,8 @@ export default function Signup() {
   };
 
     return (
-      <div>
-      <form onSubmit={handleSubmit}>
+      <div >
+      <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
       <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -82,7 +83,7 @@ export default function Signup() {
           value={email}
           onChange={handleEmail}
         />
-        <button type="submit">signup</button>
+        <Button className="mt-4" flat color="primary" auto type="submit" >Sign up</Button>
       </form>
       </div>
     );

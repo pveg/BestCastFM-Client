@@ -39,7 +39,7 @@ export default function Login(props) {
 
     return (
       <div >
-      <form  className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
+      <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
       <label htmlFor="username">Username</label>
         <input
           type="text"

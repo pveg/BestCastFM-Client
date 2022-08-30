@@ -29,7 +29,7 @@ function SearchPodcasts() {
   return (
     <>
     <div className="flex justify-center items-center">
-      <form onSubmit={handleSubmit}>
+      <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
       <label htmlFor="podcasts"/>
       <Input onChange={handlePodcast} placeholder="Search for a Podcast"/>
       <Button className="mt-4" flat color="primary" auto type="submit">Search</Button>

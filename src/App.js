@@ -27,13 +27,23 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-
-        <Route path="/search-podcasts" element={<SearchPodcasts/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/profile/edit-profile" element={<EditProfile/>} />
+        <Route
+          path="/search-podcasts"
+          element={
+            <Private>
+              <SearchPodcasts />
+            </Private>
+          }
+        />
+        <Route path="/profile" element={
+          <Private>
+        <Profile />
+          </Private>
+        } />
+        <Route path="/profile/edit-profile" element={<EditProfile />} />
         <Route path="*" element={<errorPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

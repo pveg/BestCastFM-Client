@@ -41,7 +41,7 @@ export default function EditProfile() {
 
 const deleteUser = async () => {
   try {
-    let response = await axios.put(
+    let response = await axios.post(
       `${process.env.REACT_APP_API_URL}/user/profile/${user.username}/delete`
     );
   } catch (error) {
@@ -83,7 +83,7 @@ const deleteUser = async () => {
           <Button className="mt-4" flat color="primary" auto type="submit">
             Edit Profile
           </Button>
-          <Button className="mt-4 ml-4" flat color="error" onClick={() => deleteUser()}>
+          <Button className="mt-4 ml-4" flat color="error" onPress={() => deleteUser()}>
             Delete Account
           </Button>
         </div>
