@@ -1,4 +1,4 @@
-import { Navbar, Link, Text, Avatar, Dropdown } from "@nextui-org/react";
+import { Navbar, Link, Text, Avatar, Dropdown, Button } from "@nextui-org/react";
 import { Layout } from "./Layout.jsx";
 import { AcmeLogo } from "./AcmeLogo.jsx";
 import { AuthContext } from "../../context/auth.context";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 export default function Nav() {
   const collapseItems = ["Podcasts"];
   const { loggedIn, user, logout } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   return (
     <Layout>
@@ -45,39 +47,44 @@ export default function Nav() {
             },
           }}
         >
-          <Dropdown placement="bottom-right">
-            <Navbar.Item>
-              <Dropdown.Trigger>
-                <Avatar
-                  bordered
-                  as="button"
-                  size="md"
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                />
-              </Dropdown.Trigger>
-            </Navbar.Item>
-            <Dropdown.Menu
-              aria-label="User menu actions"
-              color="warning"
-              onAction={(actionKey) => console.log({ actionKey })}
-            >
-              <Dropdown.Item key="profile" css={{ height: "$18" }}>
-                <Text b color="inherit" css={{ d: "flex" }}>
-                  Signed in as {/* {user.username} */}
-                </Text>
-                <Text b color="inherit" css={{ d: "flex" }}>
-                  {}
-                </Text>
-              </Dropdown.Item>
-              <Dropdown.Item key="favorites" withDivider>
-                My Favorites
-              </Dropdown.Item>
+        {!user && (
+          <Link href="/login">
+        <Button size='xs' ordered color="gradient"> Login </Button>
+          </Link>
+        )}
+          {user && (
+            <Dropdown placement="bottom-right">
+              <Navbar.Item>
+                <Dropdown.Trigger>
+                  <Avatar
+                    bordered
+                    as="button"
+                    size="md"
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                  />
+                </Dropdown.Trigger>
+              </Navbar.Item>
+              <Dropdown.Menu
+                aria-label="User menu actions"
+                color="warning"
+                onAction={(actionKey) => console.log({ actionKey })}
+              >
+                <Dropdown.Item key="profile" css={{ height: "$18" }}>
+                  <Text b color="inherit" css={{ d: "flex" }}>
+                    Signed in as {user.username}
+                  </Text>
+                  <Text b color="inherit" css={{ d: "flex" }}></Text>
+                </Dropdown.Item>
+                <Dropdown.Item key="favorites" withDivider>
+                  My Favorites
+                </Dropdown.Item>
 
-              <Dropdown.Item key="logout" withDivider color="error">
-                Log Out
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+                <Dropdown.Item key="logout" withDivider color="error">
+                  <p onClick={() => logout()} >Log Out</p>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
         </Navbar.Content>
         <Navbar.Collapse disableAnimation>
           {collapseItems.map((item, index) => (

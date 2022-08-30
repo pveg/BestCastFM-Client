@@ -27,7 +27,7 @@ export default function Login(props) {
           `${process.env.REACT_APP_API_URL}/auth/login`,
           body
         );
-        let createToken = await storeToken(response.data.authToken);
+        storeToken(response.data.authToken);
         authenticateUser();
         navigate("/signup");
       } catch (error) {

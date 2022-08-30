@@ -31,7 +31,6 @@ export default function Signup() {
           `${process.env.REACT_APP_API_URL}/auth/signup`,
           body
         );
-        authenticateUser();
         navigate("/login");
       } catch (error) {
         console.log(error)

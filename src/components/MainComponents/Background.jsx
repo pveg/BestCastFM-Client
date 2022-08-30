@@ -13,6 +13,7 @@ function Background() {
       <IconBG />
       <ContentInfo />
     </div>
+    <div className="mt-10">
     <Grid.Container gap={2} justify="center">
       <Grid xs={12} sm={4}>
         <Card1 />
@@ -24,6 +25,7 @@ function Background() {
         <Card3 />
       </Grid>
       </Grid.Container>
+    </div>
     </>
   );
 }

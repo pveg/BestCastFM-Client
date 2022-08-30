@@ -5,6 +5,7 @@ import Private from "./components/Private";
 import Anon from "./components/Anon";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
+import SearchPodcasts from "./pages/Podcasts/Podcasts";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/search-podcasts" element={<SearchPodcasts/>} />
         <Route path="*" element={<errorPage />} />
       </Routes>
     </>
