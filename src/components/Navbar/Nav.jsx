@@ -78,6 +78,11 @@ export default function Nav() {
                 <Dropdown.Item key="favorites" withDivider>
                   My Favorites
                 </Dropdown.Item>
+                <Dropdown.Item key="favorites" withDivider>
+                <Link href="/profile">
+                  My Profile
+                </Link>
+                </Dropdown.Item>
 
                 <Dropdown.Item key="logout" withDivider color="error">
                   <p onClick={() => logout()} >Log Out</p>
