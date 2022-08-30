@@ -3,8 +3,8 @@ import React from 'react'
 function Footer() {
   return (
     <>
-    <div>
-<footer className="footer p-10 mt-20 bg-gray-300 text-neutral-content" >
+
+<footer className="footer p-10 mt-20 mb-0 bg-gray-300 text-neutral-content" >
   <div>
     <p>BestCastFM </p>
     <span> Made with love by <a target={'_blank'} href='www.github.com/pveg'>pveg</a></span> 
@@ -18,7 +18,6 @@ function Footer() {
     </div>
   </div>
     </footer>
-    </div>
     </>
   )
 }

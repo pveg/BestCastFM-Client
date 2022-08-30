@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Input, Button } from "@nextui-org/react";
 import { CardResults } from "./CardResults";
+import {HeartFavorite} from '../../components/HeartFavorite/HeartFavorite'
 
 function SearchPodcasts() {
   const [podcasts, setPodcasts] = useState('');
@@ -31,7 +32,7 @@ function SearchPodcasts() {
     <div className="flex justify-center items-center">
       <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
       <label htmlFor="podcasts"/>
-      <Input onChange={handlePodcast} placeholder="Search for a Podcast"/>
+      <Input className="self-center" onChange={handlePodcast} placeholder="Search for a Podcast"/>
       <Button className="mt-4" flat color="primary" auto type="submit">Search</Button>
       </form>
     </div>

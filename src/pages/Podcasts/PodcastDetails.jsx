@@ -7,24 +7,30 @@ import {
   Link,
   Loading,
 } from "@nextui-org/react";
-import { useRef, useState } from "react";
-import PodcastDetails from "./PodcastDetails";
-import { HeartFavorite } from "../../components/HeartFavorite/HeartFavorite";
+import axios from "axios";
+import { useState } from "react";
 
-export const CardResults = (props) => {
-  const { results } = props;
+function PodcastDetails(props) {
+  const [episodes, setEpisodes] = useState(null)
+  const { id } = props;
 
-  const ref = useRef(null);
-  const [podcastId, setPodcastId] = useState(null);
+  console.log(id);
 
-  const handleClick = (e) => {
-    setPodcastId(e.currentTarget.id);
-    console.log(podcastId);
+  const getEpisodes = async () => {
+    try {
+      let response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/podcasts/${id}`
+      );
+      setEpisodes(response.data)
+    } catch (error) {
+      console.log(error);
+    }
   };
+  getEpisodes();
 
   return (
     <>
-      {!results && (
+      {/* {!results && (
         <>
           <Loading type="points" />
         </>
@@ -34,15 +40,8 @@ export const CardResults = (props) => {
         <div className="flex items-center flex-col mt-4">
           {results.map((elem) => {
             return (
-              <div key={elem.id} className="mb-4">
+              <div className="mb-4">
                 <Card css={{ p: "$6", mw: "400px" }}>
-                <div className='flex justify-end -mb-8'>
-                <Button className='flex justify-around'
-                        auto
-                        color="error"
-                        icon={<HeartFavorite fill="currentColor" filled />}
-                      />
-                </div>
                   <Card.Header className="mt-4">
                     <img className="w-32" alt="nextui logo" src={elem.image} />
                     <Grid.Container css={{ pl: "$6" }}>
@@ -55,14 +54,13 @@ export const CardResults = (props) => {
                   </Card.Header>
                   <Card.Body css={{ py: "$2" }}></Card.Body>
                   <Card.Footer>
-                    <div className='flex flex-row justify-around align-center'>
+                    <div>
                       <Link
-                        ref={ref}
-                        id={elem.id}
-                        onClick={handleClick}
                         className="flex items-center flex-col justify-around"
                         icon
                         color="primary"
+                        target="_blank"
+                        href={elem._id}
                       >
                         See Episodes
                       </Link>
@@ -73,8 +71,9 @@ export const CardResults = (props) => {
             );
           })}
         </div>
-      )}
-      <PodcastDetails id={podcastId} />
+      )} */}
     </>
   );
-};
+}
+
+export default PodcastDetails;

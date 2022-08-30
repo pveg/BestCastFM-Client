@@ -1,18 +1,18 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
-import { useNavigate, Link } from "react-router-dom";
-import { Button, Text } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+import { Button, Text, Link } from "@nextui-org/react";
 import axios from "axios";
 
 export default function Login(props) {
-    const {realistic} = props;
-    console.log(realistic)
+  const { realistic } = props;
+  console.log(realistic);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
-
-    const navigate = useNavigate();
-   const {storeToken, authenticateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleUsername = (e) => setUsername(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -21,7 +21,7 @@ export default function Login(props) {
     e.preventDefault();
     const body = { username, password };
 
-        const createUser = async () => {
+    const createUser = async () => {
       try {
         let response = await axios.post(
           `${process.env.REACT_APP_API_URL}/auth/login`,
@@ -31,16 +31,19 @@ export default function Login(props) {
         authenticateUser();
         navigate("/search-podcasts");
       } catch (error) {
-        console.log(error)
+        setErrorMessage(error.response.data.errorMessage);
       }
     };
     createUser();
   };
-
-    return (
-      <div >
-      <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
+  console.log(errorMessage);
+  return (
+    <div>
+      <form
+        className="flex justify-center items-center flex-col content-around"
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="username"
@@ -56,13 +59,48 @@ export default function Login(props) {
           value={password}
           onChange={handlePassword}
         />
-        <Button className="mt-4" flat color="primary" auto type="submit" >Login</Button>
+        <Button className="mt-4" flat color="primary" auto type="submit">
+          Login
+        </Button>
       </form>
-       <Text h6 className="text-center mt-4">Don't have an account yet?</Text>
-
-
-
-
+      <div className="flex justify-center flex-col items-center">
+        <Text h6 className="text-center mt-10">
+          Don't have an account yet?
+        </Text>
+        <Link className="text-center" href="/signup">
+          <Text
+            className="text-center"
+            css={{
+              textGradient: "45deg, $blue600 -20%, $pink600 50%",
+            }}
+          >
+            Signup
+          </Text>
+        </Link>
       </div>
-    );
-  };
+
+      {errorMessage && (
+        <>
+          <div className="alert alert-error shadow-lg flex items-center">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="stroke-current flex-shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span className="text-center">{errorMessage}</span>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

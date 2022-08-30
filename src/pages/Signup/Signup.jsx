@@ -43,45 +43,45 @@ export default function Signup() {
     return (
       <div >
       <form className="flex justify-center items-center flex-col content-around" onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
-          value={name}
-          onChange={handleName}
-        />
       <label htmlFor="username">Username</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Enter your username"
           className="input input-bordered w-full max-w-xs"
           value={username}
           onChange={handleUsername}
         />
+      <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          className="input input-bordered w-full max-w-xs"
+          value={name}
+          onChange={handleName}
+        />
         <label htmlFor="surname">Surname</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Enter your surname"
           className="input input-bordered w-full max-w-xs"
           value={surname}
           onChange={handleSurname}
         />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
-          value={password}
-          onChange={handlePassword}
-        />
         <label htmlFor="email">Email</label>
         <input 
           type="text"
-          placeholder="Type here"
+          placeholder="Type your email"
           className="input input-bordered w-full max-w-xs self-center"
           value={email}
           onChange={handleEmail}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          placeholder="Type your password"
+          className="input input-bordered w-full max-w-xs"
+          value={password}
+          onChange={handlePassword}
         />
         <Button className="mt-4" flat color="primary" auto type="submit" >Sign up</Button>
       </form>

@@ -31,7 +31,8 @@ function App() {
           path="/search-podcasts"
           element={
             <Private>
-              <SearchPodcasts />
+              <SearchPodcasts>
+              </SearchPodcasts>
             </Private>
           }
         />
