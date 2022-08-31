@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Loading } from "@nextui-org/react";
 import { CardResults } from "./CardResults";
 import {HeartFavorite} from '../../components/HeartFavorite/HeartFavorite'
 
 function SearchPodcasts() {
   const [podcasts, setPodcasts] = useState('');
   const [podcastResult, setPodcastResult] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handlePodcast = (e) => setPodcasts(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const getPodcasts = async () => {
       try {
         let response = await axios.post(
@@ -27,6 +27,7 @@ function SearchPodcasts() {
       };
       setPodcasts('')
       getPodcasts();
+      setIsLoading(true)
     }
   return (
     <>
@@ -37,6 +38,12 @@ function SearchPodcasts() {
       <Button className="mt-4" flat color="primary" auto type="submit">Search</Button>
       </form>
     </div>
+
+    {!isLoading && (
+        <div className="flex items-center justify-around mt-8">
+          <Loading className="" type="points" />
+        </div>
+      )}
 
     {podcastResult && (
       <CardResults results={podcastResult.results} />

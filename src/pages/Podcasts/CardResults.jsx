@@ -54,7 +54,7 @@ export const CardResults = (props) => {
                     <Button
                       ref={refFavorites}
                       onPress={handleFavorite}
-                      id={elem.id}
+                      id={elem.collectionId}
                       className="flex justify-around"
                       auto
                       color="error"
@@ -76,7 +76,7 @@ export const CardResults = (props) => {
                     <div className="flex flex-row justify-around align-center">
                       <Link
                         ref={refEpisodes}
-                        id={elem.id}
+                        id={elem.collectionId}
                         onClick={handleClick}
                         className="flex items-center flex-col justify-around"
                         icon
