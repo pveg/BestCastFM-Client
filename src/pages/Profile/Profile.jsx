@@ -12,7 +12,7 @@ function Profile() {
         <div className="flex items-center justify-center flex-col justify-around">
           <Grid>
             <Avatar
-              src=""
+              src={user.profileImage}
               css={{ size: "$20" }}
             />
           </Grid>
