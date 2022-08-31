@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import axios from "axios";
 
 export default function EditProfile() {
@@ -102,18 +102,31 @@ export default function EditProfile() {
           value={email}
           onChange={handleEmail}
         />
-        <label htmlFor="image">
-          <input
-            type="file"
-            accept=".jpg, .png, .jpeg, .webp"
-            onChange={(e) => handleFileUpload(e)}
-          />
-        </label>
+        <div className="w-20 flex justify-center">
+          <Button
+            size="sm"
+            className="mt-4 flex justify-center"
+            bordered
+            color="success"
+            auto
+          >
+            <label htmlFor="file-upload" className="text-center">
+              <span className="self-center">Choose Profile Picture</span>
+              <Input
+                id="file-upload"
+                type="file"
+                accept=".jpg, .png, .jpeg, .webp"
+                className="mt-4 invisible"
+                onChange={(e) => handleFileUpload(e)}
+              />
+            </label>
+          </Button>
+        </div>
         <div className=" flex flex-row">
           <Button className="mt-4" flat color="primary" auto type="submit">
             Edit Profile
           </Button>
-          <Button className="mt-4 ml-4" flat color="error" onClick={deleteUser}>
+          <Button className="mt-4 ml-4 justify-center" flat color="error" onClick={deleteUser}>
             Delete Account
           </Button>
         </div>
