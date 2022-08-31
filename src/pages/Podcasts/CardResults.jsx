@@ -1,36 +1,29 @@
 import { Card, Grid, Text, Link, Loading, Button } from "@nextui-org/react";
 import { useRef, useState, useContext } from "react";
-import PodcastDetails from "./PodcastDetails";
 import { HeartFavorite } from "../../components/HeartFavorite/HeartFavorite";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 
 export const CardResults = (props) => {
-  const {results}  = props;
-  console.log(results)
+  const { results } = props;
+  console.log(results);
   const { user } = useContext(AuthContext);
 
-  const refEpisodes = useRef(null);
-  const refFavorites = useRef(null)
-  const [podcastId, setPodcastId] = useState(null);
+  const refFavorites = useRef(null);
   const [favorite, setFavorite] = useState(null);
-
-  const handleClick = (e) => {
-    setPodcastId(e.currentTarget.id);
-  };
 
   const handleFavorite = (e) => {
     setFavorite(e.currentTarget.id);
-    console.log(favorite)
+    console.log(favorite);
 
     const makeFavorite = async () => {
       try {
         let response = await axios.post(
           `${process.env.REACT_APP_API_URL}/api/favorites/${user.username}/${favorite}`
         );
-        console.log("successfully added to favorites!")
+        console.log("successfully added to favorites!");
       } catch (error) {
-        console.log(error.response.data.errorMessage)
+        console.log(error.response.data.errorMessage);
       }
     };
     makeFavorite();
@@ -47,6 +40,7 @@ export const CardResults = (props) => {
       {results && (
         <div className="flex items-center flex-col mt-4">
           {results.map((elem) => {
+            const toEpisodes = `/podcasts/${elem.collectionId}`;
             return (
               <div key={elem.id} className="mb-4">
                 <Card css={{ p: "$6", mw: "400px" }}>
@@ -62,7 +56,11 @@ export const CardResults = (props) => {
                     />
                   </div>
                   <Card.Header className="mt-4">
-                    <img className="w-32" alt="nextui logo" src={elem.artworkUrl600} />
+                    <img
+                      className="w-32"
+                      alt="nextui logo"
+                      src={elem.artworkUrl600}
+                    />
                     <Grid.Container css={{ pl: "$6" }}>
                       <Grid xs={12}>
                         <Text h4 css={{ lineHeight: "$xs" }}>
@@ -75,12 +73,10 @@ export const CardResults = (props) => {
                   <Card.Footer>
                     <div className="flex flex-row justify-around align-center">
                       <Link
-                        ref={refEpisodes}
-                        id={elem.collectionId}
-                        onClick={handleClick}
                         className="flex items-center flex-col justify-around"
                         icon
                         color="primary"
+                        href={toEpisodes}
                       >
                         See Episodes
                       </Link>
@@ -92,7 +88,6 @@ export const CardResults = (props) => {
           })}
         </div>
       )}
-{/*       <PodcastDetails id={podcastId} /> */}
     </>
   );
 };

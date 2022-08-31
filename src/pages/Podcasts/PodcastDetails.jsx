@@ -1,29 +1,20 @@
-import {
-  Card,
-  Grid,
-  Text,
-  Button,
-  Row,
-  Link,
-  Loading,
-} from "@nextui-org/react";
+import { Loading } from "@nextui-org/react";
 import axios from "axios";
 import Episodes from "./Episodes";
 import { useState, useEffect } from "react";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 function PodcastDetails(props) {
-const [episodes, setEpisodes] = useState(null)
-/*   const { id } = props;  */
-  const {podcastId} = useParams();
+  const [episodes, setEpisodes] = useState(null);
+  const { podcastId } = useParams();
 
   const getEpisodes = async () => {
     try {
       let response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/podcasts/${podcastId}`
       );
-      console.log(response.data)
-      setEpisodes(response.data)
+      console.log(response.data);
+      setEpisodes(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -31,9 +22,7 @@ const [episodes, setEpisodes] = useState(null)
 
   useEffect(() => {
     getEpisodes();
-  }, [])
-
-
+  }, []);
 
   return (
     <>
@@ -43,9 +32,7 @@ const [episodes, setEpisodes] = useState(null)
         </div>
       )}
 
-        {episodes && (
-          <Episodes results={episodes}/>
-        )}
+      {episodes && <Episodes results={episodes} />}
     </>
   );
 }

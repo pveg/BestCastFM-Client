@@ -1,4 +1,5 @@
-import { Card, Grid, Text, Link, Loading, Button } from "@nextui-org/react";
+import { Card, Grid, Text, Button } from "@nextui-org/react";
+import { HeartFavorite } from "../../components/HeartFavorite/HeartFavorite";
 
 function Episodes(props) {
   const { results } = props;
@@ -18,12 +19,21 @@ function Episodes(props) {
           {results.author}
         </Text>
       </div>
-      {results.episodes.map((elem) => {
+      {results.episodes.map((elem, i) => {
         return (
-          <div key={elem.id} className="mb-4 flex justify-center items-center">
+          <div key={i} className="mb-4 flex justify-center items-center">
             <Card css={{ p: "$6", mw: "400px" }}>
-              <Card.Header className="mt-4">
-                <Grid.Container css={{ pl: "$6" }}>
+              <div className="flex justify-end -mb-4">
+                <Button
+                  id={elem.collectionId}
+                  className="flex justify-around"
+                  auto
+                  color="error"
+                  icon={<HeartFavorite fill="currentColor" filled />}
+                />
+              </div>
+              <Card.Header className="mt-4 flex items-center">
+                <Grid.Container css={{ p: "$8", pr: "$8", pl: "$6" }}>
                   <Grid xs={12}>
                     <div>
                       <Text
