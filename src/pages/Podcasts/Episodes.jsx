@@ -1,9 +1,16 @@
 import { Card, Grid, Text, Button } from "@nextui-org/react";
 import { HeartFavorite } from "../../components/HeartFavorite/HeartFavorite";
+import {useState} from 'react'
 
 function Episodes(props) {
+    const [favoriteEpisode, setFavoriteEpisode] = useState(null)
   const { results } = props;
   console.log(results);
+
+  const handleEpisode = (e) => {
+    setFavoriteEpisode(e.target.id)
+    console.log(favoriteEpisode)
+  }
 
   return (
     <>
@@ -25,7 +32,8 @@ function Episodes(props) {
             <Card css={{ p: "$6", mw: "400px" }}>
               <div className="flex justify-end -mb-4">
                 <Button
-                  id={elem.collectionId}
+                    onClick={handleEpisode}
+                  id={i+1}
                   className="flex justify-around"
                   auto
                   color="error"
@@ -33,6 +41,13 @@ function Episodes(props) {
                 />
               </div>
               <Card.Header className="mt-4 flex items-center">
+              {elem.image && (
+              <img
+                      className="w-32"
+                      alt="nextui logo"
+                      src={elem.image}
+                    />
+              )}
                 <Grid.Container css={{ p: "$8", pr: "$8", pl: "$6" }}>
                   <Grid xs={12}>
                     <div>

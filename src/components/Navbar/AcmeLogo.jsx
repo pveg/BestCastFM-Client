@@ -1,5 +1,6 @@
 import { Image } from "@nextui-org/react";
 
+
 export const AcmeLogo = () => (
   <Image
     showSkeleton

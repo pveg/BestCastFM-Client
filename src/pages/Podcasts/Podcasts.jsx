@@ -6,7 +6,7 @@ import { CardResults } from "./CardResults";
 function SearchPodcasts() {
   const [podcasts, setPodcasts] = useState("");
   const [podcastResult, setPodcastResult] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handlePodcast = (e) => setPodcasts(e.target.value);
 
@@ -20,13 +20,13 @@ function SearchPodcasts() {
         );
         console.log(response.data);
         setPodcastResult(response.data);
+        setPodcasts("");
       } catch (error) {
         console.log(error);
       }
     };
-    setPodcasts("");
     getPodcasts();
-    setIsLoading(true);
+    setIsLoading(false);
   };
   return (
     <>
@@ -37,7 +37,7 @@ function SearchPodcasts() {
         >
           <label htmlFor="podcasts" />
           <Input
-            className="self-center"
+            className="text-center self-center"
             onChange={handlePodcast}
             placeholder="Search for a Podcast"
           />
@@ -47,7 +47,7 @@ function SearchPodcasts() {
         </form>
       </div>
 
-      {!isLoading && (
+      {isLoading && (
         <div className="flex items-center justify-around mt-8">
           <Loading className="" type="points" />
         </div>

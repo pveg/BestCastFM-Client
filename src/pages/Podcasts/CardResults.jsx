@@ -42,7 +42,7 @@ export const CardResults = (props) => {
           {results.map((elem) => {
             const toEpisodes = `/podcasts/${elem.collectionId}`;
             return (
-              <div key={elem.id} className="mb-4">
+              <div key={elem.id} className="mb-4 w-full flex justify-center">
                 <Card css={{ p: "$6", mw: "400px" }}>
                   <div className="flex justify-end -mb-8">
                     <Button
