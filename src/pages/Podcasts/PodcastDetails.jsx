@@ -8,25 +8,32 @@ import {
   Loading,
 } from "@nextui-org/react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useParams} from 'react-router-dom'
 
 function PodcastDetails(props) {
   const [episodes, setEpisodes] = useState(null)
   const { id } = props;
+  const {podcastId} = useParams();
+  console.log(podcastId)
 
   console.log(id);
 
   const getEpisodes = async () => {
     try {
       let response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/podcasts/${id}`
+        `${process.env.REACT_APP_API_URL}/api/podcasts/${podcastId}`
       );
+      console.log(response)
       setEpisodes(response.data)
     } catch (error) {
       console.log(error);
     }
   };
-  getEpisodes();
+  useEffect(() => {
+    getEpisodes();
+
+  }, [podcastId])
 
   return (
     <>

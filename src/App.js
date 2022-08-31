@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 import SearchPodcasts from "./pages/Podcasts/Podcasts";
+import PodcastDetails from "./pages/Podcasts/PodcastDetails";
 import Footer from "./components/Footer/Footer";
 
 import "./App.css";
@@ -31,16 +32,26 @@ function App() {
           path="/search-podcasts"
           element={
             <Private>
-              <SearchPodcasts>
-              </SearchPodcasts>
+              <SearchPodcasts/>
             </Private>
           }
         />
-        <Route path="/profile" element={
-          <Private>
-        <Profile />
-          </Private>
-        } />
+        <Route
+          path="/podcasts/:podcastId"
+          element={
+            <Private>
+              <PodcastDetails />
+            </Private>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Private>
+              <Profile />
+            </Private>
+          }
+        />
         <Route path="/profile/edit-profile" element={<EditProfile />} />
         <Route path="*" element={<errorPage />} />
       </Routes>

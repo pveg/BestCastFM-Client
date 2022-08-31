@@ -19,6 +19,7 @@ function SearchPodcasts() {
         let response = await axios.post(
           `${process.env.REACT_APP_API_URL}/api/podcasts`, {searchValue: podcasts}
           );
+          console.log(response.data)
           setPodcastResult(response.data);
         } catch (error) {
           console.log(error);
@@ -38,7 +39,7 @@ function SearchPodcasts() {
     </div>
 
     {podcastResult && (
-      <CardResults results={podcastResult.podcasts} />
+      <CardResults results={podcastResult.results} />
     )}
     </>
   );
