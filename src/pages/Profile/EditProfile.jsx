@@ -8,6 +8,8 @@ export default function EditProfile() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const [loading, setLoading] = useState(true);
   const handleEmail = (e) => setEmail(e.target.value);
 
   const navigate = useNavigate();
@@ -17,9 +19,31 @@ export default function EditProfile() {
   const handleName = (e) => setName(e.target.value);
   const handleSurname = (e) => setSurname(e.target.value);
 
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    console.log(user);
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("profileImage", e.target.files[0]);
+
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        console.log(response.data.fileUrl);
+        setProfileImage(response.data.fileUrl);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const body = { email, surname, name };
+    const body = { email, surname, name, profileImage };
 
     const createUser = async () => {
       try {
@@ -29,26 +53,24 @@ export default function EditProfile() {
         );
         storeToken(response.data.authToken);
         authenticateUser();
-        logout();
-        navigate("/login");
+        navigate("/search-podcasts");
       } catch (error) {
         console.log(error);
       }
     };
     createUser();
+  };
 
-};
-
-const deleteUser = async () => {
-  try {
-    let response = await axios.delete(
-      `${process.env.REACT_APP_API_URL}/user/profile/${user.username}/delete`
-    );
-    navigate("/")
-  } catch (error) {
-    console.log(error);
-  }
-};
+  const deleteUser = async () => {
+    try {
+      let response = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/user/profile/${user.username}/delete`
+      );
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -80,6 +102,13 @@ const deleteUser = async () => {
           value={email}
           onChange={handleEmail}
         />
+        <label htmlFor="image">
+          <input
+            type="file"
+            accept=".jpg, .png, .jpeg, .webp"
+            onChange={(e) => handleFileUpload(e)}
+          />
+        </label>
         <div className=" flex flex-row">
           <Button className="mt-4" flat color="primary" auto type="submit">
             Edit Profile
