@@ -18,11 +18,14 @@ return (
         <Text size={12} weight="bold" transform="uppercase" color="#ffffffAA">
          
         </Text>
-        <Text h2 className="text-center"  css={{
-          textGradient: "45deg, $blue600 -20%, $yellow600 50%",
+        <div className="backdrop-blur-sm rounded-full h-20 flex items-center justify-center">
+
+        <Text size={30} className="text-center font-bold drop-shadow-xl shadow-black"  css={{
+          textGradient: "45deg, $purple700 -20%, $yellow600 70%",
         }}>
-          The new alternative on the block
+          ALL THE SHOWS
         </Text>
+        </div>
       </Col>
     </Card.Header>
     <Card.Image  style={{

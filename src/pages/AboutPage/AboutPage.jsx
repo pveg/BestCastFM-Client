@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Grid, Text } from "@nextui-org/react";
+import { Grid, Text, Link } from "@nextui-org/react";
 import { Card1 } from "../../components/ContentInfo/ContentCards";
 import { Card2 } from "../../components/ContentInfo/Card2";
 import { Card3 } from "../../components/ContentInfo/Card3";
@@ -33,15 +33,20 @@ function AboutPage() {
             className="text-center mt-4"
           >
             Developed while listening to the following podcasts{" "}
-            </Text>
+          </Text>
+
+          <Link href="/podcasts/437299706">
             <Text
               h5
               css={{
                 textGradient: "45deg, $purple600 -20%, $red600 100%",
-              }} className="mt-4"
+              }}
+              className="mt-4"
             >
               The Last Podcast on The Left{" "}
             </Text>
+          </Link>
+          <Link href="/podcasts/1209616598">
             <Text
               h5
               css={{
@@ -50,6 +55,7 @@ function AboutPage() {
             >
               JS Party{" "}
             </Text>
+          </Link>
         </motion.div>
       </div>
 

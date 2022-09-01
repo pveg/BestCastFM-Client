@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { Button, Text, Link } from "@nextui-org/react";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 export default function Login(props) {
@@ -83,7 +84,12 @@ export default function Login(props) {
 
       {errorMessage && (
         <>
-          <div className="alert alert-error shadow-lg flex items-center">
+          <motion.div
+            className="alert alert-error shadow-lg flex items-center"
+            initial={{ scale: 1 }}
+            animate={{ y: [0, 40, 0] }}
+            transition={{ duration: 1, times: [0, 0.2, 1] }}
+          >
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +106,7 @@ export default function Login(props) {
               </svg>
               <span className="text-center">{errorMessage}</span>
             </div>
-          </div>
+          </motion.div>
         </>
       )}
     </div>
