@@ -14,8 +14,8 @@ export const CardResults = (props) => {
   const [favorite, setFavorite] = useState(null);
 
   const handleFavorite = (e) => {
-    setFavorite(e.currentTarget.id);
-    console.log(e.currentTarget.id);
+    setFavorite(e.target.id);
+    console.log(favorite);
 
     const makeFavorite = async () => {
       try {
@@ -24,7 +24,7 @@ export const CardResults = (props) => {
         );
         console.log("successfully added to favorites!");
       } catch (error) {
-        console.log(error.response.data.errorMessage);
+        console.log(error);
       }
     };
     makeFavorite();

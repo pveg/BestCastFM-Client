@@ -36,7 +36,9 @@ function Footer() {
           </div>
         </div>
         <div>
-          <span className="footer-title ">Social</span>
+          <Text h4 css={{
+            textGradient: "60deg, $blue600 20%, $yellow600 100%",
+          }} className="footer-title ">Social</Text>
           <div className="grid grid-flow-col gap-4">
             <a>
               <svg
