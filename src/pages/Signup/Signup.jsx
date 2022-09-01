@@ -49,6 +49,7 @@ export default function Signup() {
           placeholder="Enter your username"
           className="input input-bordered w-full max-w-xs"
           value={username}
+          required
           onChange={handleUsername}
         />
       <label htmlFor="name">Name</label>
@@ -57,6 +58,7 @@ export default function Signup() {
           placeholder="Enter your name"
           className="input input-bordered w-full max-w-xs"
           value={name}
+          required
           onChange={handleName}
         />
         <label htmlFor="surname">Surname</label>
@@ -65,6 +67,7 @@ export default function Signup() {
           placeholder="Enter your surname"
           className="input input-bordered w-full max-w-xs"
           value={surname}
+          required
           onChange={handleSurname}
         />
         <label htmlFor="email">Email</label>
@@ -73,6 +76,7 @@ export default function Signup() {
           placeholder="Type your email"
           className="input input-bordered w-full max-w-xs self-center"
           value={email}
+          required
           onChange={handleEmail}
         />
         <label htmlFor="password">Password</label>
@@ -81,6 +85,7 @@ export default function Signup() {
           placeholder="Type your password"
           className="input input-bordered w-full max-w-xs"
           value={password}
+          required
           onChange={handlePassword}
         />
         <Button className="mt-4" flat color="primary" auto type="submit" >Sign up</Button>

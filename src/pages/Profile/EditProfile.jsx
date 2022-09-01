@@ -82,25 +82,28 @@ export default function EditProfile() {
         <label htmlFor="username">Name</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Type your name"
           className="input input-bordered w-full max-w-xs text-center"
           value={name}
+          required
           onChange={handleName}
         />
         <label htmlFor="surname">Surname</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Type your surname"
           className="input input-bordered w-full max-w-xs text-center"
           value={surname}
+          required
           onChange={handleSurname}
         />
         <label htmlFor="email">Email</label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="Type your email"
           className="input input-bordered w-full max-w-xs self-center text-center"
           value={email}
+          required
           onChange={handleEmail}
         />
         <div className="w-36 flex justify-center">

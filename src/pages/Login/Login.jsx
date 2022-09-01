@@ -49,6 +49,7 @@ export default function Login(props) {
           placeholder="username"
           className="input input-bordered w-full max-w-xs mt-4 text-center"
           value={username}
+          required
           onChange={handleUsername}
         />
         <label htmlFor="password">Password</label>
@@ -57,6 +58,7 @@ export default function Login(props) {
           placeholder="password"
           className="input input-bordered w-full max-w-xs mt-4 text-center"
           value={password}
+          required
           onChange={handlePassword}
         />
         <Button className="mt-4" flat color="primary" auto type="submit">
