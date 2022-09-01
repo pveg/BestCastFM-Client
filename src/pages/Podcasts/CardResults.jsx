@@ -2,6 +2,7 @@ import { Card, Grid, Text, Link, Loading, Button } from "@nextui-org/react";
 import { useRef, useState, useContext } from "react";
 import { HeartFavorite } from "../../components/HeartFavorite/HeartFavorite";
 import { AuthContext } from "../../context/auth.context";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 export const CardResults = (props) => {
@@ -44,7 +45,11 @@ export const CardResults = (props) => {
             return (
               <div key={elem.id} className="mb-4 w-full flex justify-center">
                 <Card css={{ p: "$6", mw: "400px" }}>
-                  <div className="flex justify-end -mb-8">
+                  <motion.div
+                    className="flex justify-end -mb-8"
+                    whileTap={{ translateY: 10 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <Button
                       ref={refFavorites}
                       onPress={handleFavorite}
@@ -54,7 +59,7 @@ export const CardResults = (props) => {
                       color="error"
                       icon={<HeartFavorite fill="currentColor" filled />}
                     />
-                  </div>
+                  </motion.div>
                   <Card.Header className="mt-4">
                     <img
                       className="w-32"

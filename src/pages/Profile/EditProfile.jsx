@@ -25,6 +25,7 @@ export default function EditProfile() {
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("profileImage", e.target.files[0]);
+    console.log(e.target.files)
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/upload`, uploadData)
@@ -102,25 +103,16 @@ export default function EditProfile() {
           value={email}
           onChange={handleEmail}
         />
-        <div className="w-20 flex justify-center">
-          <Button
-            size="sm"
-            className="mt-4 flex justify-center"
-            bordered
-            color="success"
-            auto
-          >
-            <label htmlFor="file-upload" className="text-center">
+        <div className="w-36 flex justify-center">
+            <label htmlFor="image" className="text-center">
               <span className="self-center">Choose Profile Picture</span>
               <Input
-                id="file-upload"
                 type="file"
-                accept=".jpg, .png, .jpeg, .webp"
-                className="mt-4 invisible"
+                accept=".jpg, .png, .jpeg"
+                className="mt-4"
                 onChange={(e) => handleFileUpload(e)}
               />
             </label>
-          </Button>
         </div>
         <div className=" flex flex-row">
           <Button className="mt-4" flat color="primary" auto type="submit">

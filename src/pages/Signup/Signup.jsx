@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { Button, Text } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { AuthContext } from "../../context/auth.context";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Signup() {
