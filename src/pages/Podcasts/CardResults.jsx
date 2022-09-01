@@ -15,7 +15,7 @@ export const CardResults = (props) => {
 
   const handleFavorite = (e) => {
     setFavorite(e.currentTarget.id);
-    console.log(favorite);
+    console.log(e.currentTarget.id);
 
     const makeFavorite = async () => {
       try {
@@ -75,7 +75,7 @@ export const CardResults = (props) => {
                     </Grid.Container>
                   </Card.Header>
                   <Card.Body css={{ py: "$2" }}></Card.Body>
-                  <Card.Footer>
+                  <Card.Footer className="flex justify-center">
                     <div className="flex flex-row justify-around align-center">
                       <Link
                         className="flex items-center flex-col justify-around"

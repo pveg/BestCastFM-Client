@@ -9,6 +9,8 @@ import Profile from "./pages/Profile/Profile";
 import EditProfile from "./pages/Profile/EditProfile";
 import SearchPodcasts from "./pages/Podcasts/Podcasts";
 import PodcastDetails from "./pages/Podcasts/PodcastDetails";
+import AboutPage from "./pages/AboutPage/AboutPage";
+import HowItWorks from "./pages/HowItWorks/HowItWorks";
 import Footer from "./components/Footer/Footer";
 
 import "./App.css";
@@ -32,7 +34,7 @@ function App() {
           path="/search-podcasts"
           element={
             <Private>
-              <SearchPodcasts/>
+              <SearchPodcasts />
             </Private>
           }
         />
@@ -52,8 +54,17 @@ function App() {
             </Private>
           }
         />
-        <Route path="/profile/edit-profile" element={<EditProfile />} />
+        <Route
+          path="/profile/edit-profile"
+          element={
+            <Private>
+              <EditProfile />
+            </Private>
+          }
+        />
         <Route path="*" element={<errorPage />} />
+        <Route path="/AboutPage" element={<AboutPage/>} />
+        <Route path="/how-it-works" element={<HowItWorks/>} />
       </Routes>
       <Footer />
     </>

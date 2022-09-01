@@ -38,7 +38,7 @@ function Episodes(props) {
               >
                 <Button
                   onClick={handleEpisode}
-                  id={i + 1}
+                  id={i}
                   className="flex justify-around"
                   auto
                   color="error"
