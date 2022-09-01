@@ -24,7 +24,7 @@ function Episodes(props) {
           }}
           weight="bold"
         >
-          {results.author}
+          {results.title}
         </Text>
       </div>
       {results.episodes.map((elem, i) => {
